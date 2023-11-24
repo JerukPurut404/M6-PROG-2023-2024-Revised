@@ -55,6 +55,10 @@ En nu bedenken of de `colommen` nog `speciale regels` hebben:
 
 - Zet dat in je diagram:
 
+# LET OP:
+# DE WINDKRACHT WAARDE MAG NIET UNIEK ZIJN 
+# ZORG DAT JE DAT VAKJE LEG LAAT
+
 </br>![](img/workweer.PNG)
 
 ## Klaar?
