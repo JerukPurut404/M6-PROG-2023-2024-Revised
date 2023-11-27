@@ -30,7 +30,8 @@ In php kun je deze informatie ophalen door de superglobal $_GET aan te roepen. <
     var_dump( $_GET );
     echo '</pre>';
     ```
-6. Open het zoekformulier via docker: [http://localhost:88/search.html](http://localhost:88/search.html)
+5.5. Type weer in terminal: php -S localhost:4001
+6. open http://localhost:4001/search.html in je browser
 7. Als je het zoek formulier nu test dan zie je het volgende: <br>
 ![img/zoeken.png](img/zoeken.png)
 
