@@ -33,7 +33,7 @@ Wij gaan nu de instellingen uit de .env file verwerken in php. Eerst structurere
     DB_USER=
     DB_PASSWORD=
     HOSTNAME=http://localhost:88/
-    SOURCE_ROOT=/var/www/html/source
+    SOURCE_ROOT=/var/www/html/source/
     ```
 3. Plaats de database gegevens uit docker-compose.yaml op de juiste plek ( MYSQL_DATABASE, MYSQL_USER , MYSQL_PASSWORD ) 
 
@@ -57,6 +57,7 @@ Om de gegevens uit het .env bestand te laden moeten wij via php de juiste inform
       define('DB_USER', (isset($envSettings['DB_USER'])) ? $envSettings['DB_USER'] : 'username');
       define('DB_PASSWORD', (isset($envSettings['DB_PASSWORD'])) ? $envSettings['DB_PASSWORD'] : 'pass');
       define('DB_HOST', (isset($envSettings['DB_HOST'])) ? $envSettings['DB_HOST'] : 'mariadb');
+      define('SOURCE_ROOT', (isset($envSettings['SOURCE_ROOT'])) ? $envSettings['SOURCE_ROOT'] : '/var/www/html/source/');  
     ```
 
 
@@ -107,7 +108,7 @@ Om de gegevens uit het .env bestand te laden moeten wij via php de juiste inform
    ```
 8. Defineer de mysql query, plaats een ? ( vraagteken ) op de plek waar een variabele moet komen
     ```php 
-    $sql = 'SELECT * FROM weersomstandighedenPerDag WHERE Plaats=? ORDER BY Datum'; 
+    $sql = 'SELECT * FROM weersomstandighedenPerDag WHERE Plaats = ? ORDER BY Datum'; 
     ```
 6. Bereid de query voor zodat de database server weet wat er aan gaat komen
     ```php
@@ -115,7 +116,7 @@ Om de gegevens uit het .env bestand te laden moeten wij via php de juiste inform
    ```
 7. Geef aan wat de waarde van het vraagteken is. In dit geval een string met bijvoorbeeld 'amsterdam'
     ```php
-   $stmt->bind_param('s', 'amsterdam');
+   $stmt->bind_param('s', $plaats);
     ```
 8. Voor de query uit op de server
     ```php
